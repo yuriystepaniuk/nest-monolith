@@ -16,7 +16,7 @@ datasource db {
 
 
 model User {
-  id Int @default  @id(autoincrement())
+  id Int @id @default(autoincrement())
   email String @unique
   password String?
   order Order[]
@@ -28,7 +28,7 @@ model User {
 }
 
 model Order {
-  id Int @default  @id(autoincrement()) 
+  id Int @id @default(autoincrement())
   User User @relation(fields: [userId], references: [id])
   userId Int
   orderProducts OrderProduct[]
@@ -39,7 +39,7 @@ model Order {
 }
 
 model Product {
-  id Int @default  @id(autoincrement()) 
+  id Int @id @default(autoincrement())
   orderProducts OrderProduct[]
   createAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
